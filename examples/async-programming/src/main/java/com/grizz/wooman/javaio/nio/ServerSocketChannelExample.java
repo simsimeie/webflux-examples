@@ -16,7 +16,7 @@ public class ServerSocketChannelExample {
             serverChannel.bind(address);
 
             try (var clientSocket = serverChannel.accept()) {
-                ByteBuffer buffer = ByteBuffer.allocateDirect(1024);
+                ByteBuffer buffer = ByteBuffer.allocate(1024);
                 clientSocket.read(buffer);
                 buffer.flip();
 
