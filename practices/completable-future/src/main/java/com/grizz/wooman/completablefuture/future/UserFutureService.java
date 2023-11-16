@@ -64,6 +64,8 @@ public class UserFutureService {
                 .thenRunAsync(() -> {
                     log.info("Three futures are also completed");
                 })
+                // 어차피 allOf 메서드는 Void를 반환하기 때문에 Upstream에서 thenAcceptAsync, thenRunAsync 사용하여 null이 downstream으로 떨어지더라도 상관이 없다.
+                // 실제 Downstream에서 사용할 값은 각 Future의 get 메서드를 사용해 가져오기 때문
                 .thenApplyAsync(v -> {
                     try {
                         var image = imageFuture.get();
